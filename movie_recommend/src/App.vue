@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="{ name: 'movies'}">Movie</router-link> |
+      <router-link :to="{ name: 'random'}">Random</router-link> | 
+      <router-link :to="{ name: 'watchList'}">WatchList</router-link>
     </nav>
     <router-view/>
   </div>
-</template>
+</template>   
 
 <style>
 #app {
