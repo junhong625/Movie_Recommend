@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import MovieView from '../views/MovieView.vue'
 import RandomView from '@/views/RandomView.vue'
 import WatchListView from '@/views/WatchListView.vue'
-
+import RandomRecommend from '@/views/RandomRecommend.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +21,11 @@ const routes = [
     path: '/watch-list',
     name: 'watchList',
     component: WatchListView
+  },
+  {
+    path: '/random-recommend',
+    name: 'randomRecommend',
+    component: RandomRecommend
   }
 ]
 
