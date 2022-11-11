@@ -22,9 +22,12 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    // SAVE_MOVIES(state, movies) {
-    //   state.movies = movies
-    // }
+    SAVE_MOVIES(state, movies) {
+      state.movies = movies
+    },
+    SAVE_GENRES(state, genres) {
+      state.genres = genres
+    }
   },
   actions: {
   },
