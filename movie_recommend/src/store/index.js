@@ -17,7 +17,16 @@ export default new Vuex.Store({
       '안개 또는 먼지 낀 날': ['모험', '판타지'],
       '맑은 날': ['애니메이션', '코미디']
     },
-    movies: []
+    movieList: [
+      {
+        title: '스파이더맨',
+        isWatched: false,
+      },
+      {
+        title: '스타워즈',
+        isWatched: false,
+      },
+    ]
   },
   getters: {
   },
@@ -25,8 +34,21 @@ export default new Vuex.Store({
     // SAVE_MOVIES(state, movies) {
     //   state.movies = movies
     // }
+    ADD_MOVIE(state, movie) {
+      state.movieList.push(movie)
+    }, 
+    MOVIE_COMPLETED(state, movie) {
+      const idxMovie = state.movieList.indexOf(movie)
+      state.movieList[idxMovie].isWatched = !state.movieList[idxMovie].isWatched
+    }
   },
   actions: {
+    addMovie(context, movie) {
+      context.commit('ADD_MOVIE', movie)
+    },
+    movieCompleted(context, movie) {
+      context.commit('MOVIE_COMPLETED', movie)
+    }
   },
   modules: {
   }
