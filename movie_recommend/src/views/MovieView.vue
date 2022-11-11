@@ -29,11 +29,15 @@ export default {
       }
     })
     .then(response => {
-      this.$store.state.movies.push(response)
-      this.$store.state.movies = this.$store.state.movies[0].data.results
-      this.$store.state.movies = Object.fromEntries(
-    Object.entries(this.$store.state.movies).sort(([,a],[,b]) => a-b))
-      console.log(this.$store.state.movies)
+      // this.$store.state.movies.push(response)
+      let movies = response
+      console.log(movies)
+      movies = movies.data.results
+      movies = Object.fromEntries(
+      Object.entries(movies).sort(([,a],[,b]) => a-b))
+      
+      console.log(movies)
+      this.$store.commit('SAVE_MOVIES', movies)
     })
     .catch(error => {
       console.log(error)
@@ -51,12 +55,13 @@ export default {
     })
     .then(response => {
       // console.log(response)
-      const genres = response.data.genres
-      genres.forEach((genre) => {
+      const genresList = response.data.genres
+      const genres = {}
+      genresList.forEach((genre) => {
         // console.log(genre)
-        this.$store.state.genres[genre.name] = genre.id
+        genres[genre.name] = genre.id
       })
-      console.log(this.$store.state.genres)
+      this.$store.commit('SAVE_GENRES', genres)
     })
   }
 }

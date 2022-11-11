@@ -31,15 +31,18 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    // SAVE_MOVIES(state, movies) {
-    //   state.movies = movies
-    // }
     ADD_MOVIE(state, movie) {
       state.movieList.push(movie)
     }, 
     MOVIE_COMPLETED(state, movie) {
       const idxMovie = state.movieList.indexOf(movie)
       state.movieList[idxMovie].isWatched = !state.movieList[idxMovie].isWatched
+    },
+    SAVE_MOVIES(state, movies) {
+      state.movies = movies
+    },
+    SAVE_GENRES(state, genres) {
+      state.genres = genres
     }
   },
   actions: {
